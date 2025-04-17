@@ -1,0 +1,78 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { catalogo } from "../data/catalogo.js";
+
+const categorias = catalogo.map((item) => {
+  return {
+    categoria: item.categoria,
+    item: item.data[0]["href"],
+  };
+});
+const categoriasAll = catalogo.flatMap(cat => cat.data);
+---
+
+<Layout>
+  <div class="bg-blue-100 w-full  text-blue-950 font-mono container mx-auto">
+    <header
+      class="bg-blue-100 py-4 flex items-center justify-center font-semibold text-3xl "
+    >
+      Catalogo de Joyas
+    </header>
+    <nav class="px-5 w-full sticky top-0 pt-2 bg-blue-100 ">
+      <div class="rounded-full flex items-center w-full border h-10 gap-1 pl-2">
+        <FaMagnifyingGlass className="size-5" />
+        <input
+          type="text"
+          class="h-full w-full focus:outline-none px-2 font-medium text-lg"
+        />
+      </div>
+
+
+      <div class="">
+        <p class="text-xl pt-2 font-semibold">Categoria</p>
+        <div class="overflow-x-auto whitespace-nowrap flex gap-2">
+          {
+            categorias.map((categoria) => (
+              <div class="w-20 flex flex-col items-center justify-center">
+                <img
+                  src={`https://www.deltajoyas.cl/${categoria.item}`}
+                  alt={categoria.categoria}
+                  class="size-20 rounded-full border-blue-950 object-cover "
+                  loading="lazy"
+                  decoding="async"
+                />
+								<label class="w-20 h-10 text-sm font-semibold text-blue-950 flex  text-wrap ">
+									{categoria.categoria}
+								</label>
+                
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </nav>
+    <div
+      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 p-4 gap-4 bg-blue-100"
+    >
+		{
+			categoriasAll.map((item)=>(
+			<div class="aspect-square border rounded-lg ">
+					 <img
+                  src={`https://www.deltajoyas.cl/${item.href}`}
+                  alt={item.title}
+                  class="w-full h-full object-cover rounded-lg"
+									loading="lazy"
+                  decoding="async"
+                />
+								
+			</div>
+			))
+		}
+      
+
+    </div>
+  </div>
+</Layout>
