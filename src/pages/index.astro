@@ -11,17 +11,17 @@ const categorias = catalogo.map((item) => {
     item: item.data[0]["href"],
   };
 });
-const categoriasAll = catalogo.flatMap(cat => cat.data);
+const categoriasAll = catalogo.flatMap((cat) => cat.data);
 ---
 
 <Layout>
-  <div class="bg-blue-100 w-full  text-blue-950 font-mono container mx-auto">
+  <div class="bg-blue-100 w-full text-blue-950 font-mono container mx-auto">
     <header
-      class="bg-blue-100 py-4 flex items-center justify-center font-semibold text-3xl "
+      class="bg-blue-100 py-4 flex items-center justify-center font-semibold text-3xl"
     >
       Catalogo de Joyas
     </header>
-    <nav class="px-5 w-full sticky top-0 pt-2 bg-blue-100 ">
+    <nav class="px-5 w-full pt-2 bg-blue-100">
       <div class="rounded-full flex items-center w-full border h-10 gap-1 pl-2">
         <FaMagnifyingGlass className="size-5" />
         <input
@@ -30,10 +30,9 @@ const categoriasAll = catalogo.flatMap(cat => cat.data);
         />
       </div>
 
-
       <div class="">
         <p class="text-xl pt-2 font-semibold">Categoria</p>
-        <div class="overflow-x-auto whitespace-nowrap flex gap-2">
+        <div class="overflow-x-auto scrollbar-none flex gap-2">
           {
             categorias.map((categoria) => (
               <div class="w-20 flex flex-col items-center justify-center">
@@ -44,10 +43,9 @@ const categoriasAll = catalogo.flatMap(cat => cat.data);
                   loading="lazy"
                   decoding="async"
                 />
-								<label class="w-20 h-10 text-sm font-semibold text-blue-950 flex  text-wrap ">
-									{categoria.categoria}
-								</label>
-                
+                <label class="w-20 h-10 text-sm font-semibold text-blue-950 flex items-start justify-center text-wrap text-center ">
+                  {categoria.categoria}
+                </label>
               </div>
             ))
           }
@@ -57,22 +55,24 @@ const categoriasAll = catalogo.flatMap(cat => cat.data);
     <div
       class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 p-4 gap-4 bg-blue-100"
     >
-		{
-			categoriasAll.map((item)=>(
-			<div class="aspect-square border rounded-lg ">
-					 <img
-                  src={`https://www.deltajoyas.cl/${item.href}`}
-                  alt={item.title}
-                  class="w-full h-full object-cover rounded-lg"
-									loading="lazy"
-                  decoding="async"
-                />
-								
-			</div>
-			))
-		}
-      
-
+      {
+        categoriasAll.map((item) => (
+          <a href={`/detalle/${item.codigo}`}>
+            <div class="aspect-square">
+              <img
+                src={`https://www.deltajoyas.cl/${item.href}`}
+                alt={item.nombre}
+                class="w-full h-full object-cover rounded-lg"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class=" p-1  bg-blue-100  rounded-lg   text-sm font-semibold text-blue-950">
+                {item.nombre}
+              </div>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 </Layout>

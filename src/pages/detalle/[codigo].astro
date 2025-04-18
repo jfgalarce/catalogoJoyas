@@ -1,0 +1,26 @@
+---
+import { catalogo } from "../../data/catalogo.js";
+
+// ✅ Extraer todos los códigos directamente desde cada joya
+export function getStaticPaths() {
+  const categoriasAll = catalogo.flatMap((cat) =>
+    cat.data.map(joya => ({
+      params: { codigo: joya.codigo },
+    }))
+  );
+
+  return categoriasAll;
+}
+
+// 👇 Accedé al parámetro en la vista
+const { codigo } = Astro.params;
+---
+
+<html>
+  <head>
+    <title>Detalle de Joya</title>
+  </head>
+  <body>
+    <h1>Detalle de Joya: {codigo}</h1>
+  </body>
+</html>
