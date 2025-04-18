@@ -1,26 +1,60 @@
 ---
+export const prerender = false;
 import { catalogo } from "../../data/catalogo.js";
-
-// ✅ Extraer todos los códigos directamente desde cada joya
-export function getStaticPaths() {
-  const categoriasAll = catalogo.flatMap((cat) =>
-    cat.data.map(joya => ({
-      params: { codigo: joya.codigo },
-    }))
-  );
-
-  return categoriasAll;
-}
-
-// 👇 Accedé al parámetro en la vista
+import Layout from "../../layouts/Layout.astro";
+import { IoArrowBack, IoHomeOutline } from "react-icons/io5";
 const { codigo } = Astro.params;
+
+const joya = catalogo
+  .flatMap((cat) =>
+    cat.data.map((item) => ({
+      ...item,
+      categoria: cat.categoria,
+      alias: cat.alias,
+    }))
+  )
+  .find((item) => item.codigo === codigo);
+console.log(joya);
 ---
 
-<html>
-  <head>
-    <title>Detalle de Joya</title>
-  </head>
-  <body>
-    <h1>Detalle de Joya: {codigo}</h1>
-  </body>
-</html>
+<Layout>
+  <div class="bg-slate-200 w-full py-2 px-4 flex items-center justify-between">
+    <div
+      id="go-back"
+      class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+    >
+      <IoArrowBack className="size-6" />
+    </div>
+    <p class="flex items-center justify-center text-lg font-semibold">
+      Detalle del Producto
+    </p>
+    <a href="/">
+      <div
+        class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+      >
+        <IoHomeOutline className="size-5" />
+      </div>
+    </a>
+  </div>
+
+  <img
+    alt={joya?.nombre}
+    src={`https://www.deltajoyas.cl/${joya?.href}`}
+    class="w-full pb-2"
+  />
+  <div class="bg-slate-200 grid grid-cols-[auto_1fr]">
+    <div class=" text-base font-bold p-2">Categoria</div>
+    <div class=" p-2">{joya?.categoria}</div>
+    <div class=" text-base font-bold  p-2">Código</div>
+    <div class=" p-2">{joya?.codigo}</div>
+    <div class=" text-base font-bold p-2">Nombre</div>
+    <div class=" p-2">{joya?.nombre.toLocaleLowerCase()}</div>
+    <div class=" text-base font-bold p-2">Descripción</div>
+    <div class=" p-2">{joya?.descripcion}</div>
+  </div>
+</Layout>
+<script is:inline>
+  document.getElementById("go-back").addEventListener("click", () => {
+    history.back();
+  });
+</script>

@@ -1,0 +1,26 @@
+---
+const { catalogo } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 p-4 gap-4 bg-slate-200"
+>
+  {
+    catalogo.map((item: any) => (
+      <a href={`/detalle/${item.codigo}`}>
+        <div class="aspect-square">
+          <img
+            src={`https://www.deltajoyas.cl/${item.href}`}
+            alt={item.nombre}
+            class="w-full h-full object-cover rounded-lg"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class=" p-1 rounded-lg   text-sm font-semibold">
+            {item.nombre}
+          </div>
+        </div>
+      </a>
+    ))
+  }
+</div>

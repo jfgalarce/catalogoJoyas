@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+import Fuse from "fuse.js";
+import Layout from "../../layouts/Layout.astro";
+import { catalogo } from "../../data/catalogo.js";
+import FormBuscar from "../../components/FormBuscar.astro";
+import Catalogo from "../../components/Catalogo.astro";
+import Listado from "../../components/Listado.astro";
+const { params } = Astro;
+const termino = params.termino;
+const categorias = catalogo.map((item) => {
+  return {
+    categoria: item.categoria,
+    alias: item.alias,
+    item: item.data[0]["href"],
+  };
+});
+
+const categoriasAll = catalogo.flatMap((cat) => cat.data.map(joya => ({
+    ...joya,
+    categoria: cat.categoria,
+    alias: cat.alias,
+  })));
+
+
+const fuse = new Fuse(categoriasAll, {
+  keys: ["categoria", "data.codigo","data.nombre", "data.descripcion"],
+  threshold: 0.6, // tolerancia: más bajo = más exacto
+});
+const searh = fuse.search(termino).map(item=>item['item'])
+
+---
+
+<Layout >
+  <header
+    class="bg-slate-200 py-4 flex items-center justify-center font-semibold text-3xl"
+  >
+  <a href="/">
+    Catalogo de Joyas
+    </a>
+  </header>
+
+  <nav class="w-full bg-slate-200 flex flex-col gap-4">
+    <FormBuscar inputText={termino} />
+    <Catalogo catalogoList={categorias} focus={`all`} />
+  </nav>
+  <Listado catalogo={searh} />
+</Layout>

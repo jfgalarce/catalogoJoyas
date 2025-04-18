@@ -1,6 +1,7 @@
 export const catalogo = [
   {
     categoria: "Alianzas",
+    alias:"alianzas",
     data: [
       {
         href: "catalogo/JAU/big/0105.jpg",
@@ -230,6 +231,7 @@ export const catalogo = [
   },
   {
     categoria: "Anillos de Compromiso",
+    alias:"anillo-compromiso",
     data: [
       {
         href: "catalogo/JAU/big/1105.jpg",
@@ -315,6 +317,7 @@ export const catalogo = [
   },
   {
     categoria: "Pulseras",
+    alias:"pulseras",
     data: [
       {
         href: "catalogo/JAU/big/2105.jpg",
@@ -1056,6 +1059,7 @@ export const catalogo = [
   },
   {
     categoria: "Collares",
+    alias:"collares",
     data: [
       {
         href: "catalogo/JAU/big/2605.jpg",
@@ -1485,6 +1489,7 @@ export const catalogo = [
   },
   {
     categoria: "Cadenas",
+    alias:"cadenas",
     data: [
       {
         href: "catalogo/JAU/big/2835.jpg",
@@ -1604,6 +1609,7 @@ export const catalogo = [
   },
   {
     categoria: "Aros",
+    alias:"aros",
     data: [
       {
         href: "catalogo/JAU/big/3002.jpg",
@@ -2918,6 +2924,7 @@ export const catalogo = [
   },
   {
     categoria: "Colleras",
+    alias:"colleras",
     data: [
       {
         href: "catalogo/JAU/big/3910.jpg",
@@ -2950,6 +2957,7 @@ export const catalogo = [
   },
   {
     categoria: "Corbateros",
+    alias:"corbateros",
     data: [
       {
         href: "catalogo/JAU/big/3930.jpg",
@@ -2974,6 +2982,7 @@ export const catalogo = [
   },
   {
     categoria: "Cierres y Broches",
+    alias:"cierres-broches",
     data: [
       {
         href: "catalogo/JAU/big/4005.jpg",
@@ -3088,6 +3097,7 @@ export const catalogo = [
   },
   {
     categoria: "Ilusiones",
+    alias:"ilusiones",
     data: [
       {
         href: "catalogo/JAU/big/0310.jpg",
@@ -3131,6 +3141,7 @@ export const catalogo = [
   },
   {
     categoria: "Alianzas Bicolores",
+    alias:"alianza-bicolores",
     data: [
       {
         href: "catalogo/JAU/big/0360.jpg",
@@ -3243,6 +3254,7 @@ export const catalogo = [
   },
   {
     categoria: "Anillos",
+    alias:"anillos",
     data: [
       {
         href: "catalogo/JAU/big/0405.jpg",
@@ -4222,6 +4234,7 @@ export const catalogo = [
   },
   {
     categoria: "Anillos de Sello",
+    alias:"anillos-sellos",
     data: [
       {
         href: "catalogo/JAU/big/1005.jpg",
@@ -4395,6 +4408,7 @@ export const catalogo = [
   },
   {
     categoria: "Cruces",
+    alias:"cruces",
     data: [
       {
         href: "catalogo/JAU/big/1203.jpg",
@@ -4595,6 +4609,8 @@ export const catalogo = [
   },
   {
     categoria: "Discos y Placas",
+    alias:"disco-placas",
+
     data: [
       {
         href: "catalogo/JAU/big/1305.jpg",
@@ -4703,6 +4719,8 @@ export const catalogo = [
   },
   {
     categoria: "Colgantes",
+    alias:"colgantes",
+
     data: [
       {
         href: "catalogo/JAU/big/1510.jpg",

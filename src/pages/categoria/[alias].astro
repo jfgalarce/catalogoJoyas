@@ -1,0 +1,34 @@
+---
+export const prerender = false;
+import Layout from "../../layouts/Layout.astro";
+import { catalogo } from "../../data/catalogo.js";
+import Listado from "../../components/Listado.astro";
+import Catalogo from "../../components/Catalogo.astro";
+import FormBuscar from "../../components/FormBuscar.astro";
+
+const categorias = catalogo.map((item) => {
+  return {
+    categoria: item.categoria,
+    alias: item.alias,
+    item: item.data[0]["href"],
+  };
+});
+const { alias } = Astro.params;
+const subCategoria = catalogo.filter((item) => item.alias === alias)[0]["data"];
+---
+
+<Layout>
+  <header
+    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl"
+  >
+  <a href="/">
+    Catalogo de Joyas
+    </a>
+  </header>
+
+  <nav class="w-full bg-slate-200 flex flex-col gap-4">
+    <FormBuscar inputText="" />
+    <Catalogo catalogoList={categorias} focus={alias} />
+  </nav>
+  <Listado catalogo={subCategoria} />
+</Layout>

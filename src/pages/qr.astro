@@ -1,0 +1,8 @@
+---
+import { QRCodeSVG } from 'qrcode.react';
+const currentUrl = new URL(Astro.request.url);
+const domain = currentUrl.origin;
+
+---
+
+<QRCodeSVG value="http://192.168.1.3:3000" size={250} level={'H'} marginSize={1} />
