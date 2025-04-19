@@ -1,7 +1,7 @@
-import { c as createComponent, a as createAstro, r as renderTemplate, f as renderComponent, m as maybeRenderHead, b as addAttribute } from '../../chunks/astro/server_B4v6kZYC.mjs';
+import { c as createComponent, a as createAstro, r as renderTemplate, f as renderComponent, m as maybeRenderHead, b as addAttribute } from '../../chunks/astro/server_DkhmgbiQ.mjs';
 import 'kleur/colors';
-import { c as catalogo, $ as $$FormBuscar, a as $$Catalogo } from '../../chunks/Catalogo_CKkYw_ZM.mjs';
-import { $ as $$Layout } from '../../chunks/Layout_CRuhdiXh.mjs';
+import { c as catalogo, $ as $$FormBuscar, a as $$Catalogo } from '../../chunks/Catalogo_B2OvIHTA.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_DalR6Chx.mjs';
 import { IoArrowBack, IoHomeOutline } from 'react-icons/io5';
 export { renderers } from '../../renderers.mjs';
 

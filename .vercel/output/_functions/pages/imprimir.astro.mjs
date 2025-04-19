@@ -1,6 +1,6 @@
-import { c as createComponent, r as renderTemplate, f as renderComponent } from '../chunks/astro/server_B4v6kZYC.mjs';
+import { c as createComponent, r as renderTemplate, f as renderComponent } from '../chunks/astro/server_DkhmgbiQ.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_CRuhdiXh.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DalR6Chx.mjs';
 import { jsxs, Fragment, jsx } from 'react/jsx-runtime';
 import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';

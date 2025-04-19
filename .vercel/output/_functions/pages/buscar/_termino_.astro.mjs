@@ -1,9 +1,9 @@
-import { c as createComponent, a as createAstro, f as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_B4v6kZYC.mjs';
+import { c as createComponent, a as createAstro, f as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_DkhmgbiQ.mjs';
 import 'kleur/colors';
 import Fuse from 'fuse.js';
-import { $ as $$Layout } from '../../chunks/Layout_CRuhdiXh.mjs';
-import { c as catalogo, $ as $$FormBuscar, a as $$Catalogo } from '../../chunks/Catalogo_CKkYw_ZM.mjs';
-import { $ as $$Listado } from '../../chunks/Listado_DV2jL4Cr.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_DalR6Chx.mjs';
+import { c as catalogo, $ as $$FormBuscar, a as $$Catalogo } from '../../chunks/Catalogo_B2OvIHTA.mjs';
+import { $ as $$Listado } from '../../chunks/Listado_BtUsYs6R.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro();

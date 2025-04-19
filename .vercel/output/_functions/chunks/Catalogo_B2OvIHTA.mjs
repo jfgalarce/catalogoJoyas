@@ -1,4 +1,4 @@
-import { c as createComponent, a as createAstro, r as renderTemplate, f as renderComponent, b as addAttribute, m as maybeRenderHead } from './astro/server_B4v6kZYC.mjs';
+import { c as createComponent, a as createAstro, r as renderTemplate, f as renderComponent, b as addAttribute, m as maybeRenderHead } from './astro/server_DkhmgbiQ.mjs';
 import 'kleur/colors';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import 'clsx';

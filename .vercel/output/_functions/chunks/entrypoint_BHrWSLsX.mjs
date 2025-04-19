@@ -1,8 +1,8 @@
-import { w as decryptString, x as createSlotValueFromString, y as isAstroComponentFactory, f as renderComponent, r as renderTemplate, z as ROUTE_TYPE_HEADER, B as REROUTE_DIRECTIVE_HEADER, A as AstroError, C as i18nNoLocaleFoundInPath, G as ResponseSentError, H as MiddlewareNoDataOrNextCalled, J as MiddlewareNotAResponse, K as originPathnameSymbol, O as RewriteWithBodyUsed, P as GetStaticPathsRequired, Q as InvalidGetStaticPathsReturn, S as InvalidGetStaticPathsEntry, T as GetStaticPathsExpectedParams, V as GetStaticPathsInvalidRouteParam, W as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, X as ActionNotFoundError, Y as NoMatchingStaticPathFound, Z as PrerenderDynamicEndpointPathCollide, _ as ReservedSlotName, $ as renderSlotToString, a0 as renderJSX, a1 as chunkToString, a2 as isRenderInstruction, a3 as ForbiddenRewrite, a4 as SessionStorageSaveError, a5 as SessionStorageInitError, a6 as ASTRO_VERSION, a7 as LocalsReassigned, a8 as PrerenderClientAddressNotAvailable, a9 as clientAddressSymbol, aa as ClientAddressNotAvailable, ab as StaticClientAddressNotAvailable, ac as AstroResponseHeadersReassigned, ad as responseSentSymbol$1, ae as renderPage, af as REWRITE_DIRECTIVE_HEADER_KEY, ag as REWRITE_DIRECTIVE_HEADER_VALUE, ah as renderEndpoint, ai as LocalsNotAnObject, aj as REROUTABLE_STATUS_CODES } from './astro/server_B4v6kZYC.mjs';
+import { w as decryptString, x as createSlotValueFromString, y as isAstroComponentFactory, f as renderComponent, r as renderTemplate, z as ROUTE_TYPE_HEADER, B as REROUTE_DIRECTIVE_HEADER, A as AstroError, C as i18nNoLocaleFoundInPath, G as ResponseSentError, H as MiddlewareNoDataOrNextCalled, J as MiddlewareNotAResponse, K as originPathnameSymbol, O as RewriteWithBodyUsed, P as GetStaticPathsRequired, Q as InvalidGetStaticPathsReturn, S as InvalidGetStaticPathsEntry, T as GetStaticPathsExpectedParams, V as GetStaticPathsInvalidRouteParam, W as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, X as ActionNotFoundError, Y as NoMatchingStaticPathFound, Z as PrerenderDynamicEndpointPathCollide, _ as ReservedSlotName, $ as renderSlotToString, a0 as renderJSX, a1 as chunkToString, a2 as isRenderInstruction, a3 as ForbiddenRewrite, a4 as SessionStorageSaveError, a5 as SessionStorageInitError, a6 as ASTRO_VERSION, a7 as LocalsReassigned, a8 as PrerenderClientAddressNotAvailable, a9 as clientAddressSymbol, aa as ClientAddressNotAvailable, ab as StaticClientAddressNotAvailable, ac as AstroResponseHeadersReassigned, ad as responseSentSymbol$1, ae as renderPage, af as REWRITE_DIRECTIVE_HEADER_KEY, ag as REWRITE_DIRECTIVE_HEADER_VALUE, ah as renderEndpoint, ai as LocalsNotAnObject, aj as REROUTABLE_STATUS_CODES } from './astro/server_DkhmgbiQ.mjs';
 import { bold, red, yellow, dim, blue, green } from 'kleur/colors';
 import 'clsx';
 import { serialize, parse } from 'cookie';
-import { A as ActionError, d as deserializeActionResult, s as serializeActionResult, a as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, c as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_CYwD4imT.mjs';
+import { A as ActionError, d as deserializeActionResult, s as serializeActionResult, a as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, c as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_CWjwH3cN.mjs';
 import 'es-module-lexer';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
@@ -845,13 +845,15 @@ function getActionContext(context) {
           }
           throw e;
         }
-        const {
-          props: _props,
-          getActionResult: _getActionResult,
-          callAction: _callAction,
-          redirect: _redirect,
-          ...actionAPIContext
-        } = context;
+        const omitKeys = ["props", "getActionResult", "callAction", "redirect"];
+        const actionAPIContext = Object.create(
+          Object.getPrototypeOf(context),
+          Object.fromEntries(
+            Object.entries(Object.getOwnPropertyDescriptors(context)).filter(
+              ([key]) => !omitKeys.includes(key)
+            )
+          )
+        );
         Reflect.set(actionAPIContext, ACTION_API_CONTEXT_SYMBOL, true);
         const handler = baseAction.bind(actionAPIContext);
         return handler(input);
