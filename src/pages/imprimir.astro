@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Qr from "../components/react/Qr";
-const currentUrl = new URL(Astro.request.url);
-const domain = currentUrl.origin;
+const apiUrl = import.meta.env.PUBLIC_API_URL;
 ---
 
 <Layout>
-  <Qr client:load  domain ={domain} />
+  <Qr client:load domain ={apiUrl} />
 </Layout>
 <script is:inline></script>
