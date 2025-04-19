@@ -11,10 +11,7 @@ export default defineConfig({
     open: true,
   },
   output: 'server',
-  adapter: vercel({
-    // Opcional: fuerza el runtime a Node.js 20
-    runtime: 'nodejs20.x',
-  }),
+  adapter: vercel({}),
   vite: {
     plugins: [tailwindcss()],
   },
