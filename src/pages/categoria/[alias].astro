@@ -19,16 +19,17 @@ const subCategoria = catalogo.filter((item) => item.alias === alias)[0]["data"];
 
 <Layout>
   <header
-    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl"
+    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
   >
-  <a href="/">
-    Catalogo de Joyas
-    </a>
+    <a href="/">Catálogo de Joyas</a>
   </header>
-
-  <nav class="w-full bg-slate-200 flex flex-col gap-4">
-    <FormBuscar inputText="" />
-    <Catalogo catalogoList={categorias} focus={alias} />
-  </nav>
-  <Listado catalogo={subCategoria} />
+  <div
+    class="grid xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 bg-slate-200"
+  >
+    <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
+      <FormBuscar inputText="" />
+      <Catalogo catalogoList={categorias} focus={alias} />
+    </nav>
+    <Listado catalogo={subCategoria} />
+  </div>
 </Layout>

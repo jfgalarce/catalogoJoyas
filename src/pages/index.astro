@@ -18,16 +18,18 @@ const categoriasAll = catalogo.flatMap((cat) => cat.data);
 
 <Layout catalogoList={categoriasAll} focus={`all`} catalogo={categorias}>
   <header
-    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl"
+    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
   >
-  <a href="/">
-    Catalogo de Joyas
+  <a href="/" >
+    Catálogo de Joyas
     </a>
   </header>
-
-  <nav class="w-full bg-slate-200 flex flex-col gap-4">
-    <FormBuscar inputText="" />
-    <Catalogo catalogoList={categorias} focus={`all`} />
-  </nav>
-  <Listado catalogo={categoriasAll} />
+  <div class="grid  xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1">
+    <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
+      <FormBuscar inputText="" />
+      <Catalogo catalogoList={categorias} focus={`all`} />
+    </nav>
+    <Listado catalogo={categoriasAll} />
+  </div>
+ 
 </Layout>

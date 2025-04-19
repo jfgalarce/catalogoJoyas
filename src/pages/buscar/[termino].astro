@@ -16,33 +16,34 @@ const categorias = catalogo.map((item) => {
   };
 });
 
-const categoriasAll = catalogo.flatMap((cat) => cat.data.map(joya => ({
+const categoriasAll = catalogo.flatMap((cat) =>
+  cat.data.map((joya) => ({
     ...joya,
     categoria: cat.categoria,
     alias: cat.alias,
-  })));
-
+  }))
+);
 
 const fuse = new Fuse(categoriasAll, {
-  keys: ["categoria", "data.codigo","data.nombre", "data.descripcion"],
-  threshold: 0.6, // tolerancia: más bajo = más exacto
+  keys: ["codigo", "nombre", "descripcion"],
+  threshold: /^-?\d+(\.\d+)?$/.test(termino)?0:0.4,
 });
-const searh = fuse.search(termino).map(item=>item['item'])
-
+const searh = fuse.search(termino).map((item) => item["item"]);
 ---
 
-<Layout >
+<Layout>
   <header
-    class="bg-slate-200 py-4 flex items-center justify-center font-semibold text-3xl"
+    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl"
   >
-  <a href="/">
-    Catalogo de Joyas
-    </a>
+    <a href="/"> Catálogo de Joyas </a>
   </header>
-
-  <nav class="w-full bg-slate-200 flex flex-col gap-4">
-    <FormBuscar inputText={termino} />
-    <Catalogo catalogoList={categorias} focus={`all`} />
-  </nav>
-  <Listado catalogo={searh} />
+  <div
+    class="grid xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1"
+  >
+    <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
+      <FormBuscar inputText={termino} />
+      <Catalogo catalogoList={categorias} focus={`none`} />
+    </nav>
+    <Listado catalogo={searh} />
+  </div>
 </Layout>

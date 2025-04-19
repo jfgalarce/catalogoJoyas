@@ -3,7 +3,7 @@ const { catalogo } = Astro.props;
 ---
 
 <div
-  class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 p-4 gap-4 bg-slate-200"
+  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 p-4 gap-4 bg-slate-200 h-min"
 >
   {
     catalogo.map((item: any) => (
@@ -16,8 +16,8 @@ const { catalogo } = Astro.props;
             loading="lazy"
             decoding="async"
           />
-          <div class=" p-1 rounded-lg   text-sm font-semibold">
-            {item.nombre}
+          <div class=" p-1 rounded-lg text-base font-semibold  capitalize">
+            {item.nombre.toLocaleLowerCase() }
           </div>
         </div>
       </a>
