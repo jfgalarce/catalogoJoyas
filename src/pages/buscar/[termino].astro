@@ -7,7 +7,7 @@ import FormBuscar from "../../components/FormBuscar.astro";
 import Catalogo from "../../components/Catalogo.astro";
 import Listado from "../../components/Listado.astro";
 const { params } = Astro;
-const termino = params.termino;
+const termino = params.termino || "";
 const categorias = catalogo.map((item) => {
   return {
     categoria: item.categoria,
