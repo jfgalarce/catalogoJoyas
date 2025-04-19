@@ -1,0 +1,117 @@
+---
+export const prerender = false;
+import Catalogo from "../../components/Catalogo.astro";
+import FormBuscar from "../../components/FormBuscar.astro";
+import { catalogo } from "../../data/catalogo.js";
+import Layout from "../../layouts/Layout.astro";
+import { IoArrowBack, IoHomeOutline } from "react-icons/io5";
+const { codigo } = Astro.params;
+
+const joya = catalogo
+  .flatMap((cat) =>
+    cat.data.map((item) => ({
+      ...item,
+      categoria: cat.categoria,
+      alias: cat.alias,
+    }))
+  )
+  .find((item) => item.codigo === codigo);
+
+const categorias = catalogo.map((item) => {
+  return {
+    categoria: item.categoria,
+    alias: item.alias,
+    item: item.data[0]["href"],
+  };
+});
+---
+
+<Layout>
+  <div class="xl:block max-sm:hidden max-md:hidden max-lg:hidden bg-slate-200">
+    <header
+      class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
+    >
+      <a href="/"> Catálogo de Joyas </a>
+    </header>
+    <div
+      class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200"
+    >
+      <nav
+        class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2"
+      >
+        <FormBuscar inputText="" />
+        <Catalogo catalogoList={categorias} focus={joya?.alias} />
+      </nav>
+      <div class="grid grid-cols-2 p-4 gap-4">
+        <div class="aspect-square">
+          <img
+            alt={joya?.nombre}
+            src={`https://www.deltajoyas.cl/${joya?.href}`}
+            class="w-full h-full object-cover rounded-2xl "
+          />
+        </div>
+        <div class="aspect-square">
+          <div class="bg-slate-200 grid grid-cols-[auto_1fr]">
+            <div class="text-base font-bold p-2">Categoria</div>
+            <div class="p-2 text-base font-semibold">{joya?.categoria}</div>
+            <div class="text-base font-bold p-2">Código</div>
+            <div class="p-2 text-base font-semibold">{joya?.codigo}</div>
+            <div class="text-base font-bold p-2">Nombre</div>
+            <div class="p-2 text-base font-semibold">
+              {joya?.nombre.toLocaleLowerCase()}
+            </div>
+            <div class="text-base font-bold p-2">Descripción</div>
+            <div class="p-2 text-base font-semibold">{joya?.descripcion}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="xl:hidden">
+    <div
+      class="bg-slate-200 w-full py-2 px-4 flex items-center justify-between"
+    >
+      <div
+        id="go-back"
+        class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+      >
+        <IoArrowBack className="size-6" />
+      </div>
+      <p class="flex items-center justify-center text-lg font-semibold">
+        Detalle del Producto
+      </p>
+      <a href="/">
+        <div
+          class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+        >
+          <IoHomeOutline className="size-5" />
+        </div>
+      </a>
+    </div>
+    <div class="p-2 bg-slate-200">
+      <img
+        alt={joya?.nombre}
+        src={`https://www.deltajoyas.cl/${joya?.href}`}
+        class="w-full rounded-2xl object-cover"
+      />
+    </div>
+    <div class="bg-slate-200 grid grid-cols-[auto_1fr]">
+      <div class="text-base font-bold p-2">Categoria</div>
+      <div class="p-2 text-base font-semibold">{joya?.categoria}</div>
+      <div class="text-base font-bold p-2">Código</div>
+      <div class="p-2 text-base font-semibold">{joya?.codigo}</div>
+      <div class="text-base font-bold p-2">Nombre</div>
+      <div class="p-2 text-base font-semibold">
+        {joya?.nombre.toLocaleLowerCase()}
+      </div>
+      <div class="text-base font-bold p-2">Descripción</div>
+      <div class="p-2 text-base font-semibold">{joya?.descripcion}</div>
+    </div>
+  </div>
+</Layout>
+<script is:inline>
+  document.getElementById("go-back").addEventListener("click", () => {
+    history.back();
+  });
+</script>

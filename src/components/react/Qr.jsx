@@ -24,7 +24,6 @@ const Qr = ({domain}) => {
           <FaPrint className="size-10"/> {numero}
         </button>
       </div>
-      {domain}
       <div className=" flex flex-wrap w-full bg-slate-200 items-start justify-evenly gap-2 ">
         {[...Array(parseInt(numero))].map((_, key) => (
           <div key={key} className="border-2">

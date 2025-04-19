@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { catalogo } from "../data/catalogo.js";
+import Listado from "../components/Listado.astro";
+import Catalogo from "../components/Catalogo.astro";
+import FormBuscar from "../components/FormBuscar.astro";
+
+const categorias = catalogo.map((item) => {
+  return {
+    categoria: item.categoria,
+    alias: item.alias,
+    item: item.data[0]["href"],
+  };
+}).sort((a, b) => {
+  return a.categoria.localeCompare(b.categoria, 'es', { sensitivity: 'base' });
+});
+const categoriasAll = catalogo.flatMap((cat) => cat.data).sort((a, b) => {
+  return a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' });
+});
+---
+
+<Layout catalogoList={categoriasAll} focus={`all`} catalogo={categorias}>
+  <header
+    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
+  >
+  <a href="/" >
+    Catálogo de Joyas
+    </a>
+  </header>
+  <div class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200">
+    <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
+      <FormBuscar inputText="" />
+      <Catalogo catalogoList={categorias} focus={`all`} />
+    </nav>
+    <Listado catalogo={categoriasAll} />
+  </div>
+ 
+</Layout>
