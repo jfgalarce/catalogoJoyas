@@ -8,7 +8,7 @@ const { catalogo } = Astro.props;
   {
     catalogo.map((item: any) => (
       <a href={`/detalle/${item.codigo}`}>
-        <div class="aspect-square">
+        <div class="aspect-square border rounded-lg ">
           <img
             src={`https://www.deltajoyas.cl/${item.href}`}
             alt={item.nombre}
@@ -16,7 +16,7 @@ const { catalogo } = Astro.props;
             loading="lazy"
             decoding="async"
           />
-          <div class=" p-1 rounded-b-lg text-base font-semibold  capitalize border-r border-l border-b ">
+          <div class=" p-1 text-base font-semibold  capitalize ">
             {item.nombre.toLocaleLowerCase() }
           </div>
         </div>

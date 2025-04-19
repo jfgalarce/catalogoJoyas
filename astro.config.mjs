@@ -9,7 +9,7 @@ export default defineConfig({
     host: true,
     open: true,
   },
-  
+  output: 'static',
   vite: {
     plugins: [tailwindcss()],
   },
