@@ -1,7 +1,7 @@
 import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
 import { FaPrint } from "react-icons/fa6";
-const Qr = () => {
+const Qr = ({domain}) => {
   const [numero, setNumero] = useState(1);
   return (
     <>
@@ -30,7 +30,7 @@ const Qr = () => {
           <div key={key} className="border-2">
             <QRCodeSVG
               fgColor={2}
-              value="http://192.168.1.3:3000"
+              value={domain}
               size={150}
               level={"H"}
               marginSize={1}
