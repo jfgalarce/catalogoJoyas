@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Qr from "../components/react/Qr";
+const currentUrl = new URL(Astro.request.url);
+const domain = currentUrl.origin;
+---
+
+<Layout>
+  <Qr client:load />
+</Layout>
+<script is:inline></script>

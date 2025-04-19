@@ -28,14 +28,14 @@ const categorias = catalogo.map((item) => {
 ---
 
 <Layout>
-  <div class="xl:block sm:hidden md:hidden lg:hidden bg-slate-200">
+  <div class="xl:block max-sm:hidden max-md:hidden max-lg:hidden bg-slate-200">
     <header
       class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
     >
       <a href="/"> Catálogo de Joyas </a>
     </header>
     <div
-      class="grid xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1"
+      class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200"
     >
       <nav
         class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2"
@@ -90,7 +90,7 @@ const categorias = catalogo.map((item) => {
         </div>
       </a>
     </div>
-    <div class="p-2">
+    <div class="p-2 bg-slate-200">
       <img
         alt={joya?.nombre}
         src={`https://www.deltajoyas.cl/${joya?.href}`}

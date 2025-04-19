@@ -12,11 +12,11 @@ const { catalogo } = Astro.props;
           <img
             src={`https://www.deltajoyas.cl/${item.href}`}
             alt={item.nombre}
-            class="w-full h-full object-cover rounded-lg"
+            class="w-full h-full object-cover rounded-t-lg"
             loading="lazy"
             decoding="async"
           />
-          <div class=" p-1 rounded-lg text-base font-semibold  capitalize">
+          <div class=" p-1 rounded-b-lg text-base font-semibold  capitalize border-r border-l border-b ">
             {item.nombre.toLocaleLowerCase() }
           </div>
         </div>

@@ -14,6 +14,8 @@ const categorias = catalogo.map((item) => {
     alias: item.alias,
     item: item.data[0]["href"],
   };
+}).sort((a, b) => {
+  return a.categoria.localeCompare(b.categoria, 'es', { sensitivity: 'base' });
 });
 
 const categoriasAll = catalogo.flatMap((cat) =>
@@ -38,7 +40,7 @@ const searh = fuse.search(termino).map((item) => item["item"]);
     <a href="/"> Catálogo de Joyas </a>
   </header>
   <div
-    class="grid xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1"
+    class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200"
   >
     <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
       <FormBuscar inputText={termino} />

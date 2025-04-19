@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 import { catalogo } from "../data/catalogo.js";
 import Listado from "../components/Listado.astro";
 import Catalogo from "../components/Catalogo.astro";
@@ -12,8 +11,12 @@ const categorias = catalogo.map((item) => {
     alias: item.alias,
     item: item.data[0]["href"],
   };
+}).sort((a, b) => {
+  return a.categoria.localeCompare(b.categoria, 'es', { sensitivity: 'base' });
 });
-const categoriasAll = catalogo.flatMap((cat) => cat.data);
+const categoriasAll = catalogo.flatMap((cat) => cat.data).sort((a, b) => {
+  return a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' });
+});
 ---
 
 <Layout catalogoList={categoriasAll} focus={`all`} catalogo={categorias}>
@@ -24,7 +27,7 @@ const categoriasAll = catalogo.flatMap((cat) => cat.data);
     Catálogo de Joyas
     </a>
   </header>
-  <div class="grid  xl:grid-cols-[auto_1fr] lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1">
+  <div class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200">
     <nav class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2">
       <FormBuscar inputText="" />
       <Catalogo catalogoList={categorias} focus={`all`} />

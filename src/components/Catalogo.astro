@@ -23,15 +23,15 @@ const { catalogoList, focus } = Astro.props;
     {
       catalogoList.map((categoria: any) => (
         <a href={`/categoria/${categoria.alias}`} class={`rounded-lg hover:bg-slate-300 hover:text-slate-700 p-1 ${(focus==categoria.alias)?'bg-slate-500 text-slate-200':''}`}>
-          <div class=" w-20 xl:w-full xl:justify-start xl:gap-2 flex flex-col xl:flex-row items-center justify-center ">
+          <div class=" w-16 xl:w-full xl:justify-start xl:gap-2 flex flex-col xl:flex-row items-center justify-center ">
             <img
               src={`https://www.deltajoyas.cl/${categoria.item}`}
               alt={categoria.categoria}
-              class={`size-20 xl:size-14 rounded-full object-cover ${(focus==categoria.alias || focus==='all')?'':'opacity-25'} `}
+              class={`size-16 xl:size-14 rounded-full object-cover ${(focus==categoria.alias || focus==='all')?'':'opacity-25'} `}
               loading="lazy"
               decoding="async"
             />
-            <label class="cursor-pointer w-20 xl:w-full xl:justify-start xl:text-base h-10 text-sm font-semibold flex items-center justify-center text-wrap text-center">
+            <label class="cursor-pointer w-16 xl:w-full xl:justify-start xl:text-base h-10 text-sm font-semibold flex items-center justify-center text-wrap text-center">
               {categoria.categoria}
             </label>
           </div>
