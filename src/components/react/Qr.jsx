@@ -1,4 +1,5 @@
 import { QRCodeSVG } from "qrcode.react";
+import React from "react";
 import { useState } from "react";
 import { FaPrint } from "react-icons/fa6";
 const Qr = ({domain}) => {
@@ -22,7 +23,7 @@ const Qr = ({domain}) => {
           onClick={()=>window.print()}
         >
           <FaPrint className="size-10"/> {numero}
-        </button>
+        </button> {domain}
       </div>
       <div className=" flex flex-wrap w-full bg-slate-200 items-start justify-evenly gap-2 ">
         {[...Array(parseInt(numero))].map((_, key) => (
