@@ -4,9 +4,22 @@ import Catalogo from "../../components/Catalogo.astro";
 import FormBuscar from "../../components/FormBuscar.astro";
 import { catalogo } from "../../data/catalogo.js";
 import Layout from "../../layouts/Layout.astro";
-import { IoArrowBack, IoHomeOutline } from "react-icons/io5";
-const { codigo } = Astro.params;
 
+import {
+  IoArrowBack,
+  IoHomeOutline,
+  IoLogoWhatsapp,
+  IoCallOutline,
+  IoPhonePortraitOutline,
+} from "react-icons/io5";
+
+const WHATSAPP = import.meta.env.PUBLIC_WHATSAPP;
+const CELLPHONE = import.meta.env.PUBLIC_CELLPHONE;
+const PHONE = import.meta.env.PUBLIC_PHONE;
+
+
+
+const { codigo } = Astro.params;
 const joya = catalogo
   .flatMap((cat) =>
     cat.data.map((item) => ({
@@ -24,17 +37,18 @@ const categorias = catalogo.map((item) => {
     item: item.data[0]["href"],
   };
 });
+
 ---
 
 <Layout>
-  <div class="xl:block max-sm:hidden max-md:hidden max-lg:hidden bg-slate-200">
+  <div class="xl:block max-sm:hidden md:hidden max-lg:hidden bg-slate-200">
     <header
       class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
     >
       <a href="/"> Catálogo de Joyas </a>
     </header>
     <div
-      class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1  max-sm:grid-cols-1 bg-slate-200"
+      class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1 max-sm:grid-cols-1 bg-slate-200"
     >
       <nav
         class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2"
@@ -47,7 +61,7 @@ const categorias = catalogo.map((item) => {
           <img
             alt={joya?.nombre}
             src={`https://www.deltajoyas.cl/${joya?.href}`}
-            class="w-full h-full object-cover rounded-2xl "
+            class="w-full h-full object-cover rounded-2xl"
           />
         </div>
         <div class="aspect-square">
@@ -62,12 +76,26 @@ const categorias = catalogo.map((item) => {
             </div>
             <div class="text-base font-bold p-2">Descripción</div>
             <div class="p-2 text-base font-semibold">{joya?.descripcion}</div>
+            <div class="text-base font-bold p-2">Contacto</div>
+            <div class="p-2 text-base font-semibold flex flex-wrap gap-2">
+              <div
+                class="flex w-min gap-2 items-center justify-center p-2 rounded-lg ring shadow h-10"
+              >
+                <IoLogoWhatsapp size={25} />
+                <p class="text-base">{CELLPHONE}</p>
+              </div>
+              <div
+                class="flex w-min gap-2 items-center justify-center p-2 rounded-lg ring shadow h-10"
+              >
+                <IoCallOutline size={25} />
+                <p class="text-base">{PHONE}</p>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
- 
   <div class="xl:hidden">
     <div
       class="bg-slate-200 w-full py-2 px-4 flex items-center justify-between"
@@ -107,9 +135,37 @@ const categorias = catalogo.map((item) => {
       </div>
       <div class="text-base font-bold p-2">Descripción</div>
       <div class="p-2 text-base font-semibold">{joya?.descripcion}</div>
+      <div class="text-base font-bold p-2">Contacto</div>
+      <div class="p-2 text-base font-semibold flex gap-2">
+        <a
+          href={`https://wa.me/${WHATSAPP}?text=Hola, me interesa el producto "${joya?.nombre.toLowerCase()}" (código: ${joya?.codigo}).`}
+          target="_blank"
+          class="flex flex-col items-center justify-center size-14 rounded-lg ring shadow"
+        >
+          <IoLogoWhatsapp size={25} />
+          <p class="text-xs">Mensaje</p>
+        </a>
+        <a
+          href={`tel:${CELLPHONE}`}
+          class="flex flex-col items-center justify-center size-14 rounded-lg border shadow"
+          target="_blank"
+        >
+          <IoPhonePortraitOutline size={25} />
+          <p class="text-xs">Llamar</p>
+        </a>
+        <a
+          href={`tel:${WHATSAPP}`}
+          class="flex flex-col items-center justify-center size-14 rounded-lg border shadow"
+          target="_blank"
+        >
+          <IoCallOutline size={25} />
+          <p class="text-xs">Llamar</p>
+        </a>
+      </div>
     </div>
   </div>
 </Layout>
+
 <script is:inline>
   document.getElementById("go-back").addEventListener("click", () => {
     history.back();

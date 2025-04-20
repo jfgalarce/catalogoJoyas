@@ -23,7 +23,7 @@ const Qr = ({domain}) => {
           onClick={()=>window.print()}
         >
           <FaPrint className="size-10"/> {numero}
-        </button> {domain}
+        </button>
       </div>
       <div className=" flex flex-wrap w-full bg-slate-200 items-start justify-evenly gap-2 ">
         {[...Array(parseInt(numero))].map((_, key) => (
