@@ -9,8 +9,8 @@ const apiUrl = import.meta.env.PUBLIC_API_URL;
 >
   {
     catalogo.map((item: any) => (
-      <a href={ item.codigo?`/detalle/${item.codigo}`:`${apiUrl}/categoria/${item.alias}`}>
-        <div class="aspect-square border rounded-lg ">
+      <a class=" shadow shadow-slate-500/50 rounded-lg " href={ item.codigo?`/detalle/${item.codigo}`:`${apiUrl}/categoria/${item.alias}`}>
+        <div class="aspect-square  rounded-lg ">
           <img
             src={`https://www.deltajoyas.cl/${item.href}`}
             alt={item.nombre}
