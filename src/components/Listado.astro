@@ -1,5 +1,7 @@
 ---
 const { catalogo } = Astro.props;
+const apiUrl = import.meta.env.PUBLIC_API_URL;
+
 ---
 
 <div
@@ -7,7 +9,7 @@ const { catalogo } = Astro.props;
 >
   {
     catalogo.map((item: any) => (
-      <a href={`/detalle/${item.codigo}`}>
+      <a href={ item.codigo?`/detalle/${item.codigo}`:`${apiUrl}/categoria/${item.alias}`}>
         <div class="aspect-square border rounded-lg ">
           <img
             src={`https://www.deltajoyas.cl/${item.href}`}
@@ -16,8 +18,8 @@ const { catalogo } = Astro.props;
             loading="lazy"
             decoding="async"
           />
-          <div class=" p-1 text-base font-semibold  capitalize ">
-            {item.nombre.toLocaleLowerCase() }
+          <div class=" p-1 text-base font-medium capitalize ">
+            {item.codigo?item.nombre.toLocaleLowerCase():item.categoria.toLocaleLowerCase()} 
           </div>
         </div>
       </a>
