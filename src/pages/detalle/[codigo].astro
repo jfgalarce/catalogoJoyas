@@ -79,13 +79,13 @@ const categorias = catalogo.map((item) => {
             <div class="text-base font-bold p-2">Contacto</div>
             <div class="p-2 text-base font-semibold flex flex-wrap gap-2">
               <div
-                class="flex w-min gap-2 items-center justify-center p-2 rounded-lg ring shadow h-10"
+                class="flex w-min gap-2 items-center justify-center p-2 shadow shadow-slate-500/50 rounded-lg h-10"
               >
                 <IoLogoWhatsapp size={25} />
                 <p class="text-base">{CELLPHONE}</p>
               </div>
               <div
-                class="flex w-min gap-2 items-center justify-center p-2 rounded-lg ring shadow h-10"
+                class="flex w-min gap-2 items-center justify-center p-2 shadow shadow-slate-500/50 rounded-lg h-10"
               >
                 <IoCallOutline size={25} />
                 <p class="text-base">{PHONE}</p>
@@ -102,7 +102,7 @@ const categorias = catalogo.map((item) => {
     >
       <div
         id="go-back"
-        class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+        class="size-10 rounded-full shadow shadow-slate-500/50  flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
       >
         <IoArrowBack className="size-6" />
       </div>
@@ -111,7 +111,7 @@ const categorias = catalogo.map((item) => {
       </p>
       <a href="/">
         <div
-          class="size-10 rounded-full border-2 flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
+          class="size-10 rounded-full shadow shadow-slate-500/50  flex items-center justify-center cursor-pointer hover:bg-slate-300 active:bg-slate-50"
         >
           <IoHomeOutline className="size-5" />
         </div>
@@ -140,14 +140,14 @@ const categorias = catalogo.map((item) => {
         <a
           href={`https://wa.me/${WHATSAPP}?text=Hola, me interesa el producto "${joya?.nombre.toLowerCase()}" (código: ${joya?.codigo}).`}
           target="_blank"
-          class="flex flex-col items-center justify-center size-14 rounded-lg border shadow"
+          class="flex flex-col items-center justify-center size-14 shadow shadow-slate-500/50 rounded-lg"
         >
           <IoLogoWhatsapp size={25} />
           <p class="text-xs">Mensaje</p>
         </a>
         <a
           href={`tel:${CELLPHONE}`}
-          class="flex flex-col items-center justify-center size-14 rounded-lg border shadow"
+          class="flex flex-col items-center justify-center size-14 shadow shadow-slate-500/50 rounded-lg"
           target="_blank"
         >
           <IoPhonePortraitOutline size={25} />
@@ -155,7 +155,7 @@ const categorias = catalogo.map((item) => {
         </a>
         <a
           href={`tel:${PHONE}`}
-          class="flex flex-col items-center justify-center size-14 rounded-lg border shadow"
+          class="flex flex-col items-center justify-center size-14 shadow shadow-slate-500/50 rounded-lg"
           target="_blank"
         >
           <IoCallOutline size={25} />

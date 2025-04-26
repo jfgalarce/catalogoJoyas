@@ -25,7 +25,6 @@ const categoriasAll = catalogo
   .sort((a, b) => {
     return a.nombre.localeCompare(b.nombre, "es", { sensitivity: "base" });
   });
-  console.log(categorias)
 ---
 
 <Layout catalogoList={categoriasAll} focus={`all`} catalogo={categorias}>
