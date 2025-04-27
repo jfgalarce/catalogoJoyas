@@ -1,16 +1,13 @@
 ---
-import { FaMagnifyingGlass,FaBars } from "react-icons/fa6";
-const { inputText } = Astro.props;
-
+import { FaMagnifyingGlass } from "react-icons/fa6";
+const { inputText,catalogo,focus } = Astro.props;
+import Menu from "./react/Menu";
+const apiUrl = import.meta.env.PUBLIC_API_URL;
 ---
 
-<div class="px-4 flex gap-2">
-  <div>
-    <button class="bg-slate-200 rounded-full p-2 shadow shadow-slate-500/50 hidden ">
-      <FaBars className="size-5" />
-    </button>
-  </div>
-  <div class="rounded-full flex items-center w-full shadow shadow-slate-500/50  h-10 gap-1 px-3">
+<div class="px-2 flex gap-2 ">
+  
+  <div class="rounded-lg  flex items-center w-full shadow shadow-slate-500/50  h-10 gap-1 px-3">
     <form class="flex  w-full" id="search-form">
       <input
         type="text"
@@ -24,6 +21,7 @@ const { inputText } = Astro.props;
       <button type="submit"><FaMagnifyingGlass className="size-5" /></button>
     </form>
   </div>
+  <Menu client:load catalogo={catalogo} apiUrl={apiUrl} focus={focus}   />
 </div>
 <script is:inline>
   document.getElementById("search-form").addEventListener("submit", (e) => {

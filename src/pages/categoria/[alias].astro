@@ -34,18 +34,18 @@ const subCategoria = alias === 'all'
 
 <Layout>
   <header
-    class="bg-slate-200 py-4 flex items-center justify-center font-bold text-2xl uppercase"
+    class="bg-slate-200 py-2 flex items-center justify-center font-bold text-2xl uppercase"
   >
     <a href="/">Catálogo de Joyas</a>
   </header>
   <div
-    class="grid xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1 max-sm:grid-cols-1 bg-slate-200"
+    class="grid gap-2 xl:grid-cols-[auto_1fr] max-lg:grid-cols-1 md:grid-cols-1 max-sm:grid-cols-1 bg-slate-200"
   >
     <nav
-      class="w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2"
+      class="sticky top-0 py-2 w-full bg-slate-200 flex flex-col gap-4 xl:w-96 xl:pt-4 xl:pl-2"
     >
-      <FormBuscar inputText="" />
-      <Catalogo catalogoList={categorias} focus={alias} />
+      <FormBuscar inputText="" catalogo={categorias} focus={alias}/>
+      <Catalogo catalogoList={categorias} focus={alias}  />
     </nav>
     <Listado catalogo={subCategoria} />
   </div>
